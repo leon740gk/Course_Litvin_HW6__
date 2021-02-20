@@ -82,7 +82,13 @@
 
 
 #all-the-same
-
+# ======================================================================
+# Рассмотрите вот такой вариант решения этой задачи
+# def all_the_same(elements):
+#   if elements == [] or elements.count(elements[0]) == len(elements):
+#       return True
+#   return False
+# ======================================================================
 
 
 # from typing import List, Any
@@ -124,6 +130,42 @@
 
 #date-and-time-converter
 #  Сорі за дикі костилі)
+
+# ===========================================================================
+# Айайай! А как же словарь, который мы прозодили? )
+# Помните, что дополнителые функции можно исользовать и надо разбивать задачу на подзадачи
+months_mapper = {
+    "01": "January",
+    "02": "February",
+    "03": "March",
+    "04": "April",
+    "05": "May",
+    "06": "June",
+    "07": "July",
+    "08": "August",
+    "09": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December",
+}
+
+def date_time_formatter(*args) -> list:
+    result = []
+    for i in args:
+        result.append(i if not i.startswith("0") else i[1])
+    return result
+
+
+def date_time(input_date_time: str) -> str:
+    date_and_time = input_date_time.split(" ")
+    date = date_and_time[0].split(".")
+    time = date_and_time[1].split(":")
+    day, hours, minutes = date_time_formatter(date[0], time[0], time[1])
+    minutes_message = 'minutes' if minutes != '1' else 'minute'
+    hours_message = 'hours' if hours != '1' else 'hour'
+    return f"{day} {months_mapper[date[1]]} {date[2]} year {hours} {hours_message} {minutes} {minutes_message}"
+  
+  # ===========================================================================
 
 
 
